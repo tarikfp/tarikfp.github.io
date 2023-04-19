@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  BrowserRouter as Router,
   Navigate,
   Route,
+  BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
 import Footer from './pages/footer';
@@ -11,6 +11,12 @@ import { Home } from './pages/home';
 import './style.css';
 
 function App() {
+  useEffect(() => {
+    if (window.location.href === 'https://tarikpnr.github.io/') {
+      window.location.href = 'https://tarikpinarci.com';
+    }
+  }, []);
+
   return (
     <Router basename="/">
       <div className="App">

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Navigate,
   Route,
@@ -11,11 +11,23 @@ import { Home } from './pages/home';
 import './style.css';
 
 function App() {
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     if (window.location.href === 'https://tarikpnr.github.io/') {
       window.location.href = 'https://tarikpinarci.com';
     }
+    setIsMounted(true);
   }, []);
+
+  if (!isMounted) {
+    return (
+      <div class="redirect-loader">
+        <div class="circle"></div>
+        <div class="text">Redirecting...</div>
+      </div>
+    );
+  }
 
   return (
     <Router basename="/">
